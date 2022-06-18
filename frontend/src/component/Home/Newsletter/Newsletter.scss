@@ -1,0 +1,31 @@
+.Newsletter {
+  height: 100px;
+  background-color: #f57224;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  .second {
+    span {
+      font-weight: bold;
+    }
+  }
+  .third {
+    input {
+      height: 40px;
+      width: 300px;
+      border: none;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    button {
+      height: 42px;
+      border: none;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background-color: rgb(56, 54, 54);
+      color: white;
+      font-weight: bold;
+    }
+  }
+}

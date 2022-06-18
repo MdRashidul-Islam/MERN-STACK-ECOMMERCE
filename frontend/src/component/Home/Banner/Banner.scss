@@ -1,0 +1,96 @@
+.firstSlide {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+  }
+  .left {
+    text-align: start;
+    h1 {
+      font-size: 56px;
+      line-height: 60px;
+      margin-bottom: 10px;
+      color: #545454;
+      font-weight: 100;
+    }
+    p {
+      font-size: 16px;
+      font-weight: bold;
+      color: #545454;
+    }
+    h2 {
+      margin: 10px 0px;
+      font-size: 50px;
+      font-weight: bold;
+      color: #545454;
+      sup {
+        font-size: 26px;
+      }
+    }
+    button {
+      margin: 10px 0px;
+      padding: 14px 40px;
+      border: 2px solid #f57224;
+      background: #f57224;
+      font-weight: bold;
+      border-radius: 1px;
+      transition: 0.4s ease-in-out;
+      color: white;
+
+      &:hover {
+        background: #e45e11;
+        color: white;
+      }
+    }
+    @media (max-width: 700px) {
+      padding: 10px 40px;
+      h1 {
+        padding-top: 40px;
+        font-size: 30px;
+        line-height: 36px;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 400px;
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+    @media (max-width: 700px) {
+      width: 100%;
+      padding: 20px;
+      height: 300px;
+      width: 300px;
+    }
+  }
+}
+
+.addBg1 {
+  background-image: url(../../../assets/carousel/rm222batch3-mind-03.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.addBg2 {
+  background-image: url(../../../assets/carousel/SL_042620_30310_19.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.addBg3 {
+  background-image: url(../../../assets/carousel/Screenshot_1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
