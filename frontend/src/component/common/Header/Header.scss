@@ -52,13 +52,18 @@
         background-color: #f57224;
       }
     }
-    .gap {
-      padding-right: 40px;
-    }
+  }
+  .gap {
     @media (max-width: 700px) {
-      padding-right: 60px;
+      padding-right: 70px;
     }
   }
+  .no_user_gap {
+    @media (max-width: 700px) {
+      padding-right: 20px;
+    }
+  }
+
   //header search end
 
   //common style start

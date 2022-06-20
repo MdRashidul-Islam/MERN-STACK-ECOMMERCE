@@ -38,7 +38,7 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className={user ? "header_search gap" : "header_search gap"}>
+      <div className={user ? "header_search gap" : "header_search no_user_gap"}>
         <form onSubmit={searchSubmitHandler}>
           <input
             type="text"
