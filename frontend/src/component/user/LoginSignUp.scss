@@ -73,7 +73,7 @@
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
   border-radius: 4px;
-  font: 300 0.9vmax cursive;
+  font: 300 0.9vmax poppins;
   outline: none;
 }
 
@@ -162,16 +162,17 @@
 @media screen and (max-width: 600px) {
   .LoginSignUpContainer {
     background-color: white;
+    border: 1px solid lightgray;
   }
   .LoginSignUpBox {
     width: 100vw;
-    height: 95vh;
+    height: 70vh;
   }
   .login_signUp_toggle {
     height: 5vmax;
   }
   .login_signUp_toggle > p {
-    font: 300 1.5vmax "Roboto";
+    font: 300 14px "Roboto";
   }
 
   .loginForm,
@@ -182,7 +183,7 @@
   .loginForm > div > input,
   .signUpForm > div > input {
     padding: 2.5vmax 5vmax;
-    font: 300 1.7vmax cursive;
+    font: 300 14px "poppins";
   }
 
   .loginForm > div > svg,

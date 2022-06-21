@@ -3,7 +3,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import "./Banner.scss";
 import { Link } from "react-router-dom";
-import img1 from "../../../assets/carousel/2208c700-2069-43e7-8dee-7995db81ddad.jpg";
 import img from "../../../assets/carousel/aaaa.png";
 import headphone from "../../../assets/carousel/banner.png";
 import { Zoom, Fade } from "react-reveal";
@@ -18,6 +17,7 @@ const Banner = () => {
         showArrows={true}
         showThumbs={false}
         swipeable={true}
+        stopOnHover={true}
       >
         <div className="firstSlide addBg2">
           <Fade left>

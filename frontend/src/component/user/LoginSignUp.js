@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../redux/actions/userAction";
 import { useAlert } from "react-alert";
 import Loader from "../common/Loader/Loader";
+import { TextField } from "@mui/material";
 
 const LoginSignUp = () => {
   const dispatch = useDispatch();
@@ -53,8 +54,6 @@ const LoginSignUp = () => {
     myForm.set("avatar", avatar);
     dispatch(register(myForm));
   };
-
-  console.log(location);
 
   const registerDataChange = (e) => {
     if (e.target.name === "avatar") {

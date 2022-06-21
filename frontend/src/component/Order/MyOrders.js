@@ -33,6 +33,7 @@ const MyOrders = () => {
         <Loader />
       ) : (
         <div className="myOrdersPage">
+          <h2>MY ORDER</h2>
           <Table>
             <Thead>
               <Tr>
