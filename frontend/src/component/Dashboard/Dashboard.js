@@ -1,30 +1,22 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import PropTypes from "prop-types";
+import * as React from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar.js";
 import "./Dashboard.scss";
-
+import Sidebar from "./Sidebar.js";
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const matches = useMediaQuery("(max-width:700px)");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -49,30 +41,31 @@ function Dashboard(props) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { md: "none" } }}
-          >
-            <MenuIcon
-              sx={{
-                zIndex: 999,
-                color: "black",
-                fontSize: "30px",
-              }}
-            />
-          </IconButton>
-        </Toolbar>
+        {matches && (
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { md: "none" } }}
+            >
+              <MenuIcon
+                sx={{
+                  color: "black",
+                  fontSize: "40px",
+                  margin: "10px",
+                }}
+              />
+            </IconButton>
+          </Toolbar>
+        )}
       </AppBar>
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
           variant="temporary"
@@ -113,7 +106,7 @@ function Dashboard(props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        <Toolbar />
+        {/* <Toolbar /> */}
         <Outlet />
       </Box>
     </Box>
@@ -121,37 +114,7 @@ function Dashboard(props) {
 }
 
 Dashboard.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
 export default Dashboard;
-
-// import React, { useEffect } from "react";
-// import Sidebar from "./Sidebar.js";
-// import "./Dashboard.scss";
-
-// import MetaData from "../common/MetaData.js";
-// import { Outlet } from "react-router-dom";
-
-// const Dashboard = () => {
-//   return (
-//     <div className="dashboard">
-//       <MetaData title="Admin Panel" />
-
-//       <div className="dashboardContainer">
-//         <div className="left">
-//           <Sidebar />
-//         </div>
-//         <div className="right">
-//           <Outlet />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Dashboard;

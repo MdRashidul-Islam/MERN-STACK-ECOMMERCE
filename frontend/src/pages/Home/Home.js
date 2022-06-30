@@ -1,20 +1,19 @@
-import React, { Fragment, useEffect } from "react";
-import "./Home.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { Fragment, useEffect } from "react";
 import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../component/common/Loader/Loader";
 import MetaData from "../../component/common/MetaData";
-import ProductCard from "../../component/Product/ProductCard/ProductCard";
 import Footer from "../../component/Footer/Footer";
 import Banner from "../../component/Home/Banner/Banner";
 import Product from "../../component/Product/Product";
+import ProductCard from "../../component/Product/ProductCard/ProductCard";
+import "./Home.scss";
 
+import { Link } from "react-router-dom";
 import {
   clearErrors,
   getHomeProduct,
 } from "../../redux/actions/productAction.js";
-import Newsletter from "../../component/Home/Newsletter/Newsletter";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -33,15 +32,15 @@ const Home = () => {
 
   return (
     <Fragment>
-      {loading ? (
-        <Loader />
-      ) : (
-        <Fragment>
-          <MetaData title="ECOMMERCE" />
-          <Banner />
-          <div className="home">
-            <div className="home_container">
-              <h2 className="homeHeading">HOT GADGETS</h2>
+      <MetaData title="ECOMMERCE" />
+      <Banner />
+      <div className="home">
+        <div className="home_container">
+          <h2 className="homeHeading">HOT GADGETS</h2>
+          {loading ? (
+            <Loader />
+          ) : (
+            <Fragment>
               <div className="home_row">
                 {products &&
                   products
@@ -84,13 +83,13 @@ const Home = () => {
                   <Link to="/products">See More</Link>
                 </div>
               </div>
-            </div>
-          </div>
+            </Fragment>
+          )}
+        </div>
+      </div>
 
-          {/* <Newsletter /> */}
-          <Footer />
-        </Fragment>
-      )}
+      {/* <Newsletter /> */}
+      <Footer />
     </Fragment>
   );
 };

@@ -1,14 +1,14 @@
-import React, { Fragment, useEffect } from "react";
-import "./myOrders.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, myOrders } from "../../redux/actions/orderAction";
-import Loader from "../common/Loader/Loader";
-import { Link } from "react-router-dom";
-import { useAlert } from "react-alert";
-import MetaData from "../common/MetaData";
 import LaunchIcon from "@mui/icons-material/Launch";
+import { Fragment, useEffect } from "react";
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+import { clearErrors, myOrders } from "../../redux/actions/orderAction";
+import Loader from "../common/Loader/Loader";
+import MetaData from "../common/MetaData";
+import "./myOrders.scss";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
@@ -32,43 +32,45 @@ const MyOrders = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="myOrdersPage">
-          <h2>MY ORDER</h2>
-          <Table>
-            <Thead>
-              <Tr>
-                <Th>Order ID</Th>
-                <Th>Status</Th>
-                <Th>Items Qty</Th>
-                <Th>Amount</Th>
-                <Th>Actions</Th>
-              </Tr>
-            </Thead>
-            {orders &&
-              orders.map((item) => (
-                <Tbody key={item._id}>
-                  <Tr>
-                    <Td>{item._id}</Td>
-                    <Td
-                      style={{
-                        color: `${
-                          item.orderStatus === "Delivered" ? "green" : "red"
-                        }`,
-                      }}
-                    >
-                      {item.orderStatus}
-                    </Td>
-                    <Td>{item.orderItems.length}</Td>
-                    <Td>{item.totalPrice}</Td>
-                    <Td>
-                      <Link to={`/order/${item._id}`}>
-                        <LaunchIcon />
-                      </Link>
-                    </Td>
-                  </Tr>
-                </Tbody>
-              ))}
-          </Table>
+        <div>
+          <h2 id="myOrdersHeading">MY ORDER</h2>
+          <div className="myOrdersPage">
+            <Table>
+              <Thead>
+                <Tr>
+                  <Th>Order ID</Th>
+                  <Th>Status</Th>
+                  <Th>Items Qty</Th>
+                  <Th>Amount</Th>
+                  <Th>Actions</Th>
+                </Tr>
+              </Thead>
+              {orders &&
+                orders.map((item) => (
+                  <Tbody key={item._id}>
+                    <Tr>
+                      <Td>{item._id}</Td>
+                      <Td
+                        style={{
+                          color: `${
+                            item.orderStatus === "Delivered" ? "green" : "red"
+                          }`,
+                        }}
+                      >
+                        {item.orderStatus}
+                      </Td>
+                      <Td>{item.orderItems.length}</Td>
+                      <Td>{item.totalPrice}</Td>
+                      <Td>
+                        <Link to={`/order/${item._id}`}>
+                          <LaunchIcon />
+                        </Link>
+                      </Td>
+                    </Tr>
+                  </Tbody>
+                ))}
+            </Table>
+          </div>
         </div>
       )}
     </Fragment>

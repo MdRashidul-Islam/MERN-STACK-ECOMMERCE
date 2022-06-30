@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Doughnut, Line } from "react-chartjs-2";
-import { useSelector, useDispatch } from "react-redux";
-import { getAdminProduct } from "../../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getAllOrders } from "../../redux/actions/orderAction.js";
+import { getAdminProduct } from "../../redux/actions/productAction";
 import { getAllUsers } from "../../redux/actions/userAction.js";
 
 import "./dashboardHome.scss";
@@ -13,7 +12,6 @@ const Dhome = () => {
   const dispatch = useDispatch();
 
   const { products } = useSelector((state) => state.products);
-  console.log(products);
 
   const { orders } = useSelector((state) => state.allOrders);
 

@@ -1,51 +1,52 @@
-import "./App.css";
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import WebFont from "webfontloader";
-import React from "react";
+import "./App.css";
 
 import { useSelector } from "react-redux";
 
-import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import store from "./store";
-import { loadUser } from "./redux/actions/userAction";
-import Home from "./pages/Home/Home";
-import ProductDetails from "./component/Product/ProductDetails";
+import axios from "axios";
 import UserOptions from "./component/common/UserOptions";
-import LoginSignUp from "./component/user/LoginSignUp";
+import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
+import LoginSignUp from "./component/user/LoginSignUp";
+import Home from "./pages/Home/Home";
+import { loadUser } from "./redux/actions/userAction";
+import store from "./store";
 
 import Cart from "./component/Cart/Cart";
-import Shipping from "./component/Cart/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder";
-import Payment from "./component/Cart/Payment";
 import OrderSuccess from "./component/Cart/OrderSuccess";
-import MyOrders from "./component/Order/MyOrders";
-import Profile from "./component/user/Profile";
-import Dashboard from "./component/Dashboard/Dashboard";
-import ProductList from "./component/Dashboard/ProductList";
-import Dhome from "./component/Dashboard/Dhome";
+import Payment from "./component/Cart/Payment";
+import Shipping from "./component/Cart/Shipping";
+import Header from "./component/common/Header/Header";
 import ScrollToTop from "./component/common/ScrollToTop";
+import Dashboard from "./component/Dashboard/Dashboard";
+import Dhome from "./component/Dashboard/Dhome";
 import NewProduct from "./component/Dashboard/NewProduct";
 import OrderList from "./component/Dashboard/OrderList";
-import UsersList from "./component/Dashboard/UsersList";
+import ProcessOrder from "./component/Dashboard/ProcessOrder";
+import ProductList from "./component/Dashboard/ProductList";
 import ProductReviews from "./component/Dashboard/ProductReviews";
 import UpdateProduct from "./component/Dashboard/UpdateProduct";
-import ProcessOrder from "./component/Dashboard/ProcessOrder";
 import UpdateUser from "./component/Dashboard/UpdateUser";
-import UpdateProfile from "./component/user/UpdateProfile";
+import UsersList from "./component/Dashboard/UsersList";
+import MyOrders from "./component/Order/MyOrders";
+import OrderDetails from "./component/Order/OrderDetails";
+import ForgotPassword from "./component/user/ForgotPassword";
+import Profile from "./component/user/Profile";
 import ResetPassword from "./component/user/ResetPassword";
 import UpdatePassword from "./component/user/UpdatePassword";
-import ForgotPassword from "./component/user/ForgotPassword";
-import OrderDetails from "./component/Order/OrderDetails";
-import PrivateRoute from "./routes/PrivateRoute";
-import Header from "./component/common/Header/Header";
+import UpdateProfile from "./component/user/UpdateProfile";
 import AdminRoute from "./routes/AdminRoute";
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
+
+  const location = useLocation();
 
   const [stripeApiKey, setStripeApiKey] = useState("");
 
@@ -72,9 +73,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
-
       {isAuthenticated && <UserOptions user={user} />}
-
       <Routes>
         <Route
           path="/"

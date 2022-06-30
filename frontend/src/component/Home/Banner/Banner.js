@@ -17,7 +17,8 @@ const Banner = () => {
         showArrows={true}
         showThumbs={false}
         swipeable={true}
-        stopOnHover={true}
+        // stopOnHover={true}
+        style={{ zIndex: -1 }}
       >
         <div className="firstSlide addBg2">
           <Fade left>

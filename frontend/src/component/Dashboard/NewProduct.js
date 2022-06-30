@@ -1,17 +1,17 @@
-import React, { Fragment, useEffect, useState } from "react";
-import "./newProduct.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, createProduct } from "../../redux/actions/productAction";
-import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import DescriptionIcon from "@mui/icons-material/Description";
-import StorageIcon from "@mui/icons-material/Storage";
-import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import { NEW_PRODUCT_RESET } from "../../redux/constants/productConstants";
+import DescriptionIcon from "@mui/icons-material/Description";
+import SpellcheckIcon from "@mui/icons-material/Spellcheck";
+import StorageIcon from "@mui/icons-material/Storage";
+import { Fragment, useEffect, useState } from "react";
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { clearErrors, createProduct } from "../../redux/actions/productAction";
+import { NEW_PRODUCT_RESET } from "../../redux/constants/productConstants";
 import MetaData from "../common/MetaData";
+import "./newProduct.scss";
 
 const NewProduct = () => {
   const dispatch = useDispatch();
@@ -98,94 +98,96 @@ const NewProduct = () => {
   return (
     <Fragment>
       <MetaData title="Create Product" />
-      <div className="dashboard">
-        <div className="newProductContainer">
-          <form
-            className="createProductForm"
-            encType="multipart/form-data"
-            onSubmit={createProductSubmitHandler}
-          >
-            <h1>Create Product</h1>
 
-            <div>
-              <SpellcheckIcon />
-              <input
-                type="text"
-                placeholder="Product Name"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div>
-              <AttachMoneyIcon />
-              <input
-                type="number"
-                placeholder="Price"
-                required
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </div>
+      <div className="newProductContainer">
+        <form
+          className="createProductForm"
+          encType="multipart/form-data"
+          onSubmit={createProductSubmitHandler}
+        >
+          <h1>Create Product</h1>
 
-            <div>
-              <DescriptionIcon />
+          <div>
+            <SpellcheckIcon />
+            <input
+              type="text"
+              placeholder="Product Name"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div>
+            <AttachMoneyIcon />
+            <input
+              type="number"
+              placeholder="Price"
+              required
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
 
-              <textarea
-                placeholder="Product Description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                cols="30"
-                rows="1"
-              ></textarea>
-            </div>
+          <div>
+            <DescriptionIcon />
 
-            <div>
-              <AccountTreeIcon />
-              <select onChange={(e) => setCategory(e.target.value)}>
-                <option value="">Choose Category</option>
-                {categories.map((cate) => (
-                  <option key={cate} value={cate}>
-                    {cate}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <textarea
+              placeholder="Product Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              cols="30"
+              rows="1"
+            ></textarea>
+          </div>
 
-            <div>
-              <StorageIcon />
-              <input
-                type="number"
-                placeholder="Stock"
-                required
-                onChange={(e) => setStock(e.target.value)}
-              />
-            </div>
-
-            <div id="createProductFormFile">
-              <input
-                type="file"
-                name="avatar"
-                accept="image/*"
-                onChange={createProductImagesChange}
-                multiple
-              />
-            </div>
-
-            <div id="createProductFormImage">
-              {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
+          <div>
+            <AccountTreeIcon />
+            <select onChange={(e) => setCategory(e.target.value)}>
+              <option value="">Choose Category</option>
+              {categories.map((cate) => (
+                <option key={cate} value={cate}>
+                  {cate}
+                </option>
               ))}
-            </div>
+            </select>
+          </div>
 
-            <Button
-              id="createProductBtn"
-              type="submit"
-              disabled={loading ? true : false}
-            >
-              Create
-            </Button>
-          </form>
-        </div>
+          <div>
+            <StorageIcon />
+            <input
+              type="number"
+              placeholder="Stock"
+              required
+              onChange={(e) => setStock(e.target.value)}
+            />
+          </div>
+
+          <div id="createProductFormFile">
+            <input
+              type="file"
+              name="avatar"
+              accept="image/*"
+              onChange={createProductImagesChange}
+              multiple
+            />
+          </div>
+
+          <div
+            id="createProductFormImage"
+            className={imagesPreview.length && "add-height"}
+          >
+            {imagesPreview.map((image, index) => (
+              <img key={index} src={image} alt="Product Preview" />
+            ))}
+          </div>
+
+          <Button
+            id="createProductBtn"
+            type="submit"
+            disabled={loading ? true : false}
+          >
+            Create
+          </Button>
+        </form>
       </div>
     </Fragment>
   );
